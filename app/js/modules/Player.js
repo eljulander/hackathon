@@ -21,4 +21,13 @@ Player.prototype.updatePlayerPosition = function() {
     this.y += this.yMotionSpeed
 }
 
+Player.prototype.collision = function(width, height) {
+
+    var xRad = this.x + this.xMotionSpeed,
+        yRad = this.y + this.yMotionSpeed
+
+    if (xRad > width - this.radius || xRad < this.radius) this.xMotionSpeed = -this.xMotionSpeed
+    if (yRad > height - this.radius || yRad < this.radius) this.yMotionSpeed = -this.yMotionSpeed
+}
+
 module.exports = Player

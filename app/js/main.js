@@ -20,6 +20,7 @@ function frameRate() {
     canvas.drawBorders()
     player.drawPlayer(canvas.ctx)
     player.updatePlayerPosition()
+    player.collision(canvas.width, canvas.height)
 }
 
 document.onkeydown = events.direction
