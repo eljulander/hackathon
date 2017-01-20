@@ -1,0 +1,7 @@
+@import './modules/reset.css';
+
+canvas {
+    background: #eee;
+    display: block;
+    margin: 0 auto;
+}
