@@ -3,8 +3,8 @@ function Player() {
     this.height = 10
     this.x = 50
     this.y = 50
-    this.xMotionSpeed = 2
-    this.yMotionSpeed = 2
+    this.xMotionSpeed = 0
+    this.yMotionSpeed = 0
     this.radius = 10
 }
 
@@ -16,18 +16,52 @@ Player.prototype.drawPlayer = function (ctx) {
     ctx.closePath();
 }
 
-Player.prototype.updatePlayerPosition = function() {
+Player.prototype.updatePlayerPosition = function () {
     this.x += this.xMotionSpeed
     this.y += this.yMotionSpeed
 }
 
-Player.prototype.collision = function(width, height) {
+Player.prototype.collision = function (cwidth, cheight) {
 
     var xRad = this.x + this.xMotionSpeed,
         yRad = this.y + this.yMotionSpeed
 
-    if (xRad > width - this.radius || xRad < this.radius) this.xMotionSpeed = -this.xMotionSpeed
-    if (yRad > height - this.radius || yRad < this.radius) this.yMotionSpeed = -this.yMotionSpeed
+    if (xRad > cwidth - this.radius || xRad < this.radius) this.xMotionSpeed = -this.xMotionSpeed
+    if (yRad > cheight - this.radius || yRad < this.radius) this.yMotionSpeed = -this.yMotionSpeed
+}
+
+Player.prototype.movePlayer = function () {
+
+    var that = this
+
+    document.onkeydown = function (e) {
+
+        console.log(that.x)
+        console.log(e)
+
+        var keyCode = e.keyCode || e.which,
+            stringKey = keyCode.toString(),
+            move = {
+                '37': function (e) {
+                    /*arrow left*/
+                    that.xMotionSpeed = that.xMotionSpeed - 2
+                },
+                '38': function (e) {
+                    /*arrow up*/
+                    that.yMotionSpeed = that.yMotionSpeed - 2
+                },
+                '39': function (e) {
+                    /*arrow right*/
+                    that.xMotionSpeed = that.xMotionSpeed + 2
+                },
+                '40': function (e) {
+                    /*arrow down*/
+                    that.yMotionSpeed = that.yMotionSpeed + 2
+                }
+            }
+
+        move[stringKey]()
+    }
 }
 
 module.exports = Player
