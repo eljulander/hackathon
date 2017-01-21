@@ -36,10 +36,7 @@ Player.prototype.movePlayer = function () {
 
     document.onkeydown = function (e) {
 
-        console.log(that.x)
-        console.log(e)
-
-        var keyCode = e.keyCode || e.which,
+        let keyCode = e.keyCode || e.which,
             stringKey = keyCode.toString(),
             move = {
                 '37': function (e) {
@@ -61,6 +58,13 @@ Player.prototype.movePlayer = function () {
             }
 
         move[stringKey]()
+    }
+
+    document.onkeyup = function(e) {
+
+        that.xMotionSpeed = 0
+        that.yMotionSpeed = 0
+
     }
 }
 
