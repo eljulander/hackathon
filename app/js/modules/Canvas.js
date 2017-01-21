@@ -1,3 +1,15 @@
+function wallGenerator(diff, that) {
+
+    var i = 0
+
+    for (i; i <= diff; i++) {
+        that.ctx.beginPath()
+        that.ctx.moveTo(i * 50, 2)
+        that.ctx.lineTo(i * 50, 200)
+        that.ctx.stroke()
+    }
+}
+
 function Canvas() {
     this.canvasElement = document.getElementById("myCanvas")
     this.ctx = this.canvasElement.getContext("2d")
@@ -26,25 +38,11 @@ Canvas.prototype.getMazeWalls = function (diff) {
 
     return function () {
 
-        var i = 0,
-            wallGen = {
-                'easy': function () {
-
-                    for (i; i <= easyDiff; i++) {
-                        that.ctx.beginPath()
-                        that.ctx.moveTo(i*50, 2)
-                        that.ctx.lineTo(i*50, 200)
-                        that.ctx.stroke()
-                    }
-
-                },
-                'medium': function () {
-                    mediumDiff
-                },
-                'hard': function () {
-                    hardDiff
-                }
-            }
+        wallGen = {
+            'easy': wallGenerator(easyDiff, that),
+            'medium': wallGenerator(mediumDiff, that),
+            'hard': wallGenerator(hardDiff, that)
+        }
 
         wallGen[difficulty]()
     }
