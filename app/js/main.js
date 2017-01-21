@@ -10,7 +10,9 @@ const SCRIPT_DIR = __dirname + '/js/modules/',
 /*OBJECTS*/
 
 var canvas = new Canvas(),
-    player = new Player()
+    player = new Player(),
+    diff = 'easy',
+    drawMazeWalls = canvas.getMazeWalls(diff)
 
 /*FRAME RATE*/
 
@@ -19,6 +21,7 @@ player.movePlayer()
 function frameRate() {
     canvas.clearFrame()
     canvas.drawBorders()
+    drawMazeWalls()
     player.drawPlayer(canvas.ctx)
     player.updatePlayerPosition()
     player.collision(canvas.width, canvas.height)
