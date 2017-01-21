@@ -38,10 +38,16 @@ Canvas.prototype.getMazeWalls = function (diff) {
 
     return function () {
 
-        wallGen = {
-            'easy': wallGenerator(easyDiff, that),
-            'medium': wallGenerator(mediumDiff, that),
-            'hard': wallGenerator(hardDiff, that)
+        var wallGen = {
+            'easy': () => {
+                wallGenerator(easyDiff, that)
+            },
+            'medium':  () => {
+                wallGenerator(mediumDiff, that)
+            },
+            'hard':  () => {
+                wallGenerator(hardDiff, that)
+            }
         }
 
         wallGen[difficulty]()
