@@ -30,13 +30,15 @@ Canvas.prototype.drawBorders = function () {
 Canvas.prototype.getMazeWalls = function (diff) {
 
     var numWalls = Math.ceil(Math.random() * 10),
-        easyDiff = numWalls += 7,
-        mediumDiff = numWalls += 12,
-        hardDiff = numWalls += 17,
+        easyDiff = numWalls + 7,
+        mediumDiff = numWalls + 12,
+        hardDiff = numWalls + 17,
         difficulty = diff,
         that = this
 
     return function () {
+
+        console.log(numWalls, easyDiff)
 
         var wallGen = {
             'easy': () => {
