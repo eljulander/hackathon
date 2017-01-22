@@ -1,15 +1,3 @@
-function wallGenerator(diff, that) {
-
-    var i = 0
-
-    for (i; i <= diff; i++) {
-        that.ctx.beginPath()
-        that.ctx.moveTo(i * 50, 2)
-        that.ctx.lineTo(i * 50, 200)
-        that.ctx.stroke()
-    }
-}
-
 function Canvas() {
     this.canvasElement = document.getElementById("myCanvas")
     this.ctx = this.canvasElement.getContext("2d")
@@ -27,33 +15,70 @@ Canvas.prototype.drawBorders = function () {
     this.ctx.stroke()
 }
 
+/*RANDOM WALLS EXPERIMENT*/
+
+Canvas.prototype.wallGenerator = function (diff) {
+
+    var i = 0
+
+    for (i; i <= diff; i++) {
+
+        var orient = Math.round(Math.random())
+
+        if (orient === 0) {
+            /*Vertical Orientation*/
+
+            this.ctx.beginPath()
+            this.ctx.moveTo(i * 50, 2)
+            this.ctx.lineTo(i * 50, 200)
+            this.ctx.stroke()
+
+        } else if (orient === 1) {
+            /*Horizontal Orientation*/
+
+            this.ctx.beginPath()
+            this.ctx.moveTo(2, i * 50)
+            this.ctx.lineTo(200, i * 50)
+            this.ctx.stroke()
+
+        } else {
+            console.warn("Program error")
+        }
+
+    }
+}
+
 Canvas.prototype.getMazeWalls = function (diff) {
 
     var numWalls = Math.ceil(Math.random() * 10),
         easyDiff = numWalls + 7,
-        mediumDiff = numWalls + 12,
-        hardDiff = numWalls + 17,
+        mediumDiff = numWalls + 17,
+        hardDiff = numWalls + 27,
         difficulty = diff,
         that = this
 
     return function () {
 
-        console.log(numWalls, easyDiff)
-
         var wallGen = {
             'easy': () => {
-                wallGenerator(easyDiff, that)
+                that.wallGenerator(easyDiff)
             },
-            'medium':  () => {
-                wallGenerator(mediumDiff, that)
+            'medium': () => {
+                that.wallGenerator(mediumDiff)
             },
-            'hard':  () => {
-                wallGenerator(hardDiff, that)
+            'hard': () => {
+                that.wallGenerator(hardDiff)
             }
         }
 
         wallGen[difficulty]()
     }
+}
+
+/*END RANDOM*/
+
+Canvas.prototype.drawStaticWalls = function(StaticWalls) {
+    StaticWalls(this.ctx)
 }
 
 Canvas.prototype.clearFrame = function () {
