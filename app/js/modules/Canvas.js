@@ -23,6 +23,7 @@ Canvas.prototype.wallGenerator = function (diff) {
 
     for (i; i <= diff; i++) {
 
+        /*1 or 0?*/
         var orient = Math.round(Math.random())
 
         if (orient === 0) {

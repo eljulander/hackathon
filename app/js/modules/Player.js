@@ -36,8 +36,12 @@ Player.prototype.movePlayer = function () {
 
     document.onkeydown = function (e) {
 
+        /*To make a static speed instead of a steady acceleration*/
+
+        /*
         that.xMotionSpeed = 0
         that.yMotionSpeed = 0
+        */
 
         let keyCode = e.keyCode || e.which,
             stringKey = keyCode.toString(),
