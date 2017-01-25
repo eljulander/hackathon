@@ -1,3 +1,7 @@
+/*
+Enemy Prototype constructor
+*/
+
 function Enemy(cwidth, cheight) {
     this.width = 10
     this.height = 10
@@ -11,6 +15,10 @@ function Enemy(cwidth, cheight) {
     this.collisions = 0
 }
 
+/*
+Draw the enemy circle on the canvas element.
+*/
+
 Enemy.prototype.drawEnemy = function (ctx) {
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.radius + this.collisions * 1.5, 0, Math.PI * 2);
@@ -19,10 +27,19 @@ Enemy.prototype.drawEnemy = function (ctx) {
     ctx.closePath();
 }
 
+/*
+Automatic motion of the enemy circle.
+*/
+
 Enemy.prototype.updateEnemyPosition = function () {
     this.x += this.xMotionSpeed
     this.y += this.yMotionSpeed
 }
+
+/*
+Automatic and size incrementing motion of the enemy.  Each time that the enemy
+touches a wall the enemy grows.
+*/
 
 Enemy.prototype.collision = function (cwidth, cheight) {
 

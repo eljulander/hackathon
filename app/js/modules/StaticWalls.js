@@ -1,3 +1,7 @@
+/*
+To be used if a maze game is to be made.
+*/
+
 function drawStaticWalls(ctx) {
     ctx.beginPath()
     ctx.moveTo(50, 2)

@@ -1,9 +1,15 @@
+/*
+Canvas prototype constructor
+*/
+
 function Canvas() {
     this.canvasElement = document.getElementById("myCanvas")
     this.ctx = this.canvasElement.getContext("2d")
     this.width = this.canvasElement.width
     this.height = this.canvasElement.height
 }
+
+/*Prototype method to draw the borders on the canvas.  Purely decorative*/
 
 Canvas.prototype.drawBorders = function () {
     this.ctx.beginPath()
@@ -17,11 +23,22 @@ Canvas.prototype.drawBorders = function () {
 
 /*RANDOM WALLS EXPERIMENT*/
 
-Canvas.prototype.wallGenerator = function (diff) {
+/*
+The random walls is to be used with a maze game time.
+The application currently does not have the support for
+a maze game type.
+*/
+
+/*
+The following method is used to draw the walls.  It is
+used with the main.js file.
+*/
+
+Canvas.prototype.wallGenerator = function (numWalls) {
 
     var i = 0
 
-    for (i; i <= diff; i++) {
+    for (i; i <= numWalls; i++) {
 
         /*1 or 0?*/
         var orient = Math.round(Math.random())
@@ -49,6 +66,12 @@ Canvas.prototype.wallGenerator = function (diff) {
     }
 }
 
+/*
+This method is to get a preset of the random maze walls.
+This is so that there is no random spontaneous walls
+during the framerate.
+*/
+
 Canvas.prototype.getMazeWalls = function (diff) {
 
     var numWalls = Math.ceil(Math.random() * 10),
@@ -58,29 +81,31 @@ Canvas.prototype.getMazeWalls = function (diff) {
         difficulty = diff,
         that = this
 
-    return function () {
+    /*
+    The following function needs to get a preset of walls
+    so that it is not messed up during the framerate.  This
+    is to be used for the wall generator.
+    */
 
-        var wallGen = {
-            'easy': () => {
-                that.wallGenerator(easyDiff)
-            },
-            'medium': () => {
-                that.wallGenerator(mediumDiff)
-            },
-            'hard': () => {
-                that.wallGenerator(hardDiff)
-            }
-        }
+    that.wallGenerator(easyDiff)
 
-        wallGen[difficulty]()
-    }
+    wallGen[difficulty]()
+
 }
 
 /*END RANDOM*/
 
-Canvas.prototype.drawStaticWalls = function(StaticWalls) {
+/*
+Used for drawing static walls and not random walls.
+*/
+
+Canvas.prototype.drawStaticWalls = function (StaticWalls) {
     StaticWalls(this.ctx)
 }
+
+/*
+Clear the frame for the framerate.
+*/
 
 Canvas.prototype.clearFrame = function () {
     this.ctx.clearRect(0, 0, canvas.width, canvas.height)
