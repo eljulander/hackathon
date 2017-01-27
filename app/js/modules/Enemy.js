@@ -20,11 +20,11 @@ Draw the enemy circle on the canvas element.
 */
 
 Enemy.prototype.drawEnemy = function (ctx) {
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.radius + this.collisions * 1.5, 0, Math.PI * 2);
-    ctx.fillStyle = "#a73838";
-    ctx.fill();
-    ctx.closePath();
+    ctx.beginPath()
+    ctx.arc(this.x, this.y, this.radius + this.collisions * 1.5, 0, Math.PI * 2)
+    ctx.fillStyle = '#a73838'
+    ctx.fill()
+    ctx.closePath()
 }
 
 /*

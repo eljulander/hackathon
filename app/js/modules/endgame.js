@@ -1,5 +1,5 @@
 function endgame(playerPos, enemyPos) {
-    //    console.log(playerPos, enemyPos)
+    console.log(playerPos, enemyPos)
 
     /* TODO: Make logic where it analyzes if there is a collision between the balls*/
 

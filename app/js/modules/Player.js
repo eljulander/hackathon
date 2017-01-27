@@ -17,11 +17,11 @@ Draw player.  It's just a circle for now.
 */
 
 Player.prototype.drawPlayer = function (ctx) {
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-    ctx.fillStyle = '#558bb8';
-    ctx.fill();
-    ctx.closePath();
+    ctx.beginPath()
+    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2)
+    ctx.fillStyle = '#558bb8'
+    ctx.fill()
+    ctx.closePath()
 }
 
 /*
@@ -65,19 +65,19 @@ Player.prototype.movePlayer = function () {
         let keyCode = e.keyCode || e.which,
             stringKey = keyCode.toString(),
             move = {
-                '37': function (e) {
+                '37': function () {
                     /*arrow left*/
                     that.xMotionSpeed = that.xMotionSpeed - 2
                 },
-                '38': function (e) {
+                '38': function () {
                     /*arrow up*/
                     that.yMotionSpeed = that.yMotionSpeed - 2
                 },
-                '39': function (e) {
+                '39': function () {
                     /*arrow right*/
                     that.xMotionSpeed = that.xMotionSpeed + 2
                 },
-                '40': function (e) {
+                '40': function () {
                     /*arrow down*/
                     that.yMotionSpeed = that.yMotionSpeed + 2
                 }
@@ -86,7 +86,7 @@ Player.prototype.movePlayer = function () {
         move[stringKey]()
     }
 
-    document.onkeyup = function (e) {
+    document.onkeyup = function () {
 
         that.xMotionSpeed = 0
         that.yMotionSpeed = 0

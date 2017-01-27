@@ -6,7 +6,8 @@
     "scripts": {
         "start": "electron .",
         "pack": "build --dir",
-        "dist": "build"
+        "dist": "build",
+        "lint": "eslint ./app/js/"
     },
     "keywords": [
             "Electron",
