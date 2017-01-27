@@ -19,7 +19,7 @@ Draw player.  It's just a circle for now.
 Player.prototype.drawPlayer = function (ctx) {
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-    ctx.fillStyle = "#0095DD";
+    ctx.fillStyle = '#558bb8';
     ctx.fill();
     ctx.closePath();
 }

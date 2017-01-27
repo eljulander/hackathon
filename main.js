@@ -14,6 +14,10 @@ const path = require('path'),
 let mainWindow
 
 function createWindow() {
+
+    var client = require('electron-connect').client
+    client.create(mainWindow)
+
     // Create the browser window.
     mainWindow = new BrowserWindow({
         width: 900,
