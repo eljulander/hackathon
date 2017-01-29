@@ -50,7 +50,7 @@ function frameRate() {
 
 
     /*Pass into the function the positional data of the player and the enemy.*/
-//    endgame(player, enemy)
+    endgame(player, enemy)
 }
 
 window.inter = setInterval(frameRate, 10)

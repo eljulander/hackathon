@@ -1,11 +1,17 @@
-function endgame(playerPos, enemyPos) {
-    console.log(playerPos, enemyPos)
+function endgame(player, enemy) {
 
-    /* TODO: Make logic where it analyzes if there is a collision between the balls*/
+    var enemyRadius = enemy.radius + enemy.collisions * 1.5,
+        playerRadius = player.radius,
+        middleEvalExpr = Math.pow(player.x - enemy.x, 2) + Math.pow(player.y - enemy.y, 2),
+        lowerEval = Math.pow(playerRadius - enemyRadius, 2) <= middleEvalExpr,
+        higherEval = middleEvalExpr <= Math.pow(playerRadius + enemyRadius, 2)
 
-    setTimeout(() => {
-        clearInterval(window.inter)
-    }, 4000)
+    if (lowerEval && higherEval) {
+        setTimeout(() => {
+            clearInterval(window.inter)
+        }, 1)
+    }
+
 }
 
 module.exports = endgame

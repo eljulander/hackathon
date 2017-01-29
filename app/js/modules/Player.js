@@ -39,11 +39,11 @@ Evaluate collision of the player with the edges of the play area.
 
 Player.prototype.collision = function (cwidth, cheight) {
 
-    var xRad = this.x + this.xMotionSpeed,
-        yRad = this.y + this.yMotionSpeed
+    var xPos = this.x + this.xMotionSpeed,
+        yPos = this.y + this.yMotionSpeed
 
-    if (xRad > cwidth - this.radius || xRad < this.radius) this.xMotionSpeed = -this.xMotionSpeed
-    if (yRad > cheight - this.radius || yRad < this.radius) this.yMotionSpeed = -this.yMotionSpeed
+    if (xPos > cwidth - this.radius || xPos < this.radius) this.xMotionSpeed = -this.xMotionSpeed
+    if (yPos > cheight - this.radius || yPos < this.radius) this.yMotionSpeed = -this.yMotionSpeed
 }
 
 /*
