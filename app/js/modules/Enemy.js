@@ -1,7 +1,6 @@
 /*
 Enemy Prototype constructor
 */
-
 function Enemy(cwidth, cheight) {
     this.width = 10
     this.height = 10
